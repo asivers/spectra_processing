@@ -81,7 +81,7 @@ tempApprox = np.array(tempApproxArr)
 energyApprox = np.array(energyApproxArr)
 
 plt.plot(tempGiven, energyGiven, 'ks')
-plt.plot(tempApprox, energyApprox, 'r')
+plt.plot(tempApprox, energyApprox, 'g')
 
 plt.xlabel('T, K')
 plt.ylabel('E, эВ')

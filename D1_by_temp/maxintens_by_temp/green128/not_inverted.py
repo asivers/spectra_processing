@@ -81,7 +81,7 @@ tempApprox = np.array(tempApproxArr)
 maxApprox = np.array(maxApproxArr)
 
 plt.plot(tempGiven, maxGiven, 'ks')
-plt.plot(tempApprox, maxApprox, 'r')
+plt.plot(tempApprox, maxApprox, 'g')
 
 plt.xlabel('T, K')
 plt.ylabel('I, отн. ед.')
