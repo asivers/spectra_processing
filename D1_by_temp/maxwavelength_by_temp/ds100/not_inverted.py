@@ -22,9 +22,10 @@ def normalize(arr):
 
 
 def energy(_waveLength):
+    _energy = []
     for i in range(len(_waveLength)):
-        _waveLength[i] = 1243.125 / _waveLength[i]
-    return _waveLength
+        _energy.append(1243.125 / _waveLength[i])
+    return _energy
 
 
 def approx(_temp, _dif):
@@ -68,17 +69,28 @@ energyGivenArr = energy(waveLengthGivenArr)
 energyGiven = np.array(energyGivenArr)
 
 params = curve_fit(approx, tempGiven, energyGiven)
-print(params[0])
-with open('result.txt', 'w') as ouf:
-    ouf.write(str(params[0][0]))
+dif = params[0][0]
 
 tempApproxArr = []
 energyApproxArr = []
 for T in range(0, 215):
     tempApproxArr.append(T)
-    energyApproxArr.append(1.17 - 0.000473 * T * T / (636 + T) - params[0][0])
+    energyApproxArr.append(1.17 - 0.000473 * T * T / (636 + T) - dif)
 tempApprox = np.array(tempApproxArr)
 energyApprox = np.array(energyApproxArr)
+
+energyRoom = approx(293, dif)
+waveLengthRoom = 1243.125 / energyRoom
+energy10K = approx(10, dif)
+waveLength10K = 1243.125 / energy10K
+changeEnergy = energyRoom - energy10K
+changeWaveLength = waveLengthRoom - waveLength10K
+with open('result.txt', 'w') as ouf:
+    ouf.write('dif = ' + str(dif) + '\n')
+    ouf.write('energyRoom = ' + str(energyRoom) + '\n')
+    ouf.write('waveLengthRoom = ' + str(waveLengthRoom) + '\n')
+    ouf.write('changeEnergy = ' + str(changeEnergy) + '\n')
+    ouf.write('changeWaveLength = ' + str(changeWaveLength) + '\n')
 
 plt.plot(tempGiven, energyGiven, 'ks')
 plt.plot(tempApprox, energyApprox, 'r')
