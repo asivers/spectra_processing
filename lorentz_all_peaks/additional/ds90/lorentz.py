@@ -12,6 +12,30 @@ def check(ielt, arr):
     return True
 
 
+def halfwidth(_lorentz):
+    lorentzSize = len(_lorentz)
+    yMax = 0
+    xMax = 0
+    for i in range(lorentzSize):
+        if _lorentz[i] > yMax:
+            yMax = _lorentz[i]
+            xMax = i
+    halfInt = yMax / 2
+    xCurr = xMax
+    while True:
+        xCurr -= 1
+        if _lorentz[xCurr] < halfInt:
+            break
+    leftX = xCurr * 2 + 1000
+    xCurr = xMax
+    while True:
+        xCurr += 1
+        if _lorentz[xCurr] < halfInt:
+            break
+    rightX = xCurr * 2 + 1000
+    return rightX - leftX
+
+
 def lorentzsum(x, gamma0, gamma1, gamma2, gamma3, gamma4, gamma5, scale0, scale1, scale2, scale3, scale4, scale5, shift0, shift1, shift2, shift3, shift4, shift5):
     return (scale0 * ((1/(math.pi * gamma0))*((gamma0 * gamma0) / ((x - shift0) * (x - shift0) + gamma0 * gamma0)))) + (scale1 * ((1/(math.pi * gamma1))*((gamma1 * gamma1) / ((x - shift1) * (x - shift1) + gamma1 * gamma1)))) + (scale2 * ((1/(math.pi * gamma2))*((gamma2 * gamma2) / ((x - shift2) * (x - shift2) + gamma2 * gamma2)))) + (scale3 * ((1/(math.pi * gamma3))*((gamma3 * gamma3) / ((x - shift3) * (x - shift3) + gamma3 * gamma3)))) + (scale4 * ((1/(math.pi * gamma4))*((gamma4 * gamma4) / ((x - shift4) * (x - shift4) + gamma4 * gamma4)))) + (scale5 * ((1/(math.pi * gamma5))*((gamma5 * gamma5) / ((x - shift5) * (x - shift5) + gamma5 * gamma5))))
 
@@ -109,3 +133,30 @@ ax.legend()
 plt.grid()
 plt.savefig(name + '_additional.png', dpi=600)
 plt.show()
+
+with open('result.txt', 'w') as ouf:
+    ouf.write('D1 peak' + '\n')
+    ouf.write('Wavelength, nm: ' + str(shift5) + '\n')
+    ouf.write('Energy, eV: ' + str(1243.125 / shift5) + '\n')
+    ouf.write('Halfwidth, nm: ' + str(halfwidth(lorentz5)) + '\n')
+    ouf.write('\n')
+    ouf.write('D2 peak' + '\n')
+    ouf.write('Wavelength, nm: ' + str(shift4) + '\n')
+    ouf.write('Energy, eV: ' + str(1243.125 / shift4) + '\n')
+    ouf.write('Halfwidth, nm: ' + str(halfwidth(lorentz4)) + '\n')
+    ouf.write('\n')
+    ouf.write('D3 peak' + '\n')
+    ouf.write('Wavelength, nm: ' + str(shift3) + '\n')
+    ouf.write('Energy, eV: ' + str(1243.125 / shift3) + '\n')
+    ouf.write('Halfwidth, nm: ' + str(halfwidth(lorentz3)) + '\n')
+    ouf.write('\n')
+    ouf.write('D4 peak' + '\n')
+    ouf.write('Wavelength, nm: ' + str(shift2) + '\n')
+    ouf.write('Energy, eV: ' + str(1243.125 / shift2) + '\n')
+    ouf.write('Halfwidth, nm: ' + str(halfwidth(lorentz2)) + '\n')
+    ouf.write('\n')
+    ouf.write('Band-edge peak' + '\n')
+    ouf.write('Wavelength, nm: ' + str(shift1) + '\n')
+    ouf.write('Energy, eV: ' + str(1243.125 / shift1) + '\n')
+    ouf.write('Halfwidth, nm: ' + str(halfwidth(lorentz1)) + '\n')
+    ouf.write('\n')

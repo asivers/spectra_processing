@@ -1,0 +1,25 @@
+D1 peak
+Wavelength, nm: 1544
+Energy, eV: 0.8051327720207254
+Halfwidth, nm: 40
+
+D2 peak
+Wavelength, nm: 1470
+Energy, eV: 0.8456632653061225
+Halfwidth, nm: 16
+
+D3 peak
+Wavelength, nm: 1328
+Energy, eV: 0.9360881024096386
+Halfwidth, nm: 8
+
+D4 peak
+Wavelength, nm: 1248
+Energy, eV: 0.99609375
+Halfwidth, nm: 16
+
+Band-edge peak
+Wavelength, nm: 1128
+Energy, eV: 1.102061170212766
+Halfwidth, nm: 8
+
