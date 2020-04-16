@@ -93,7 +93,7 @@ with open('result.txt', 'w') as ouf:
     ouf.write('changeWaveLength = ' + str(changeWaveLength) + '\n')
 
 plt.plot(tempGiven, energyGiven, 'ks')
-plt.plot(tempApprox, energyApprox, 'g')
+plt.plot(tempApprox, energyApprox, 'r')
 
 plt.xlabel('T, K')
 plt.ylabel('E, эВ')

@@ -88,7 +88,7 @@ for i in range(len(tempApprox)):
     maxApprox[i] = math.log10(maxApprox[i])
 
 plt.plot(tempGiven, maxGiven, 'ks')
-plt.plot(tempApprox, maxApprox, 'g')
+plt.plot(tempApprox, maxApprox, 'r')
 
 plt.xlabel('1000/T, (1/K)')
 plt.ylabel('log(I), отн. ед.')
