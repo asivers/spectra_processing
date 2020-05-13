@@ -186,7 +186,7 @@ plt.plot(energyNp, lorentz8)
 plt.plot(energyNp, lorentzall)
 
 ax = plt.subplot(111)
-ax.plot(energyNp, intensityNp, label='Измеренный')
+ax.plot(energyNp, intensityNp, label='Измерения')
 ax.plot(energyNp, lorentz1, label='D1')
 ax.plot(energyNp, lorentz2, label='Неизв. пик')
 ax.plot(energyNp, lorentz3, label='D2')

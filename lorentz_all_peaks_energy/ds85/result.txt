@@ -1,0 +1,40 @@
+D1 peak
+Wavelength, nm: 1544.0
+Energy, eV: 0.8051327720207254
+Halfwidth, nm: 20
+
+Unrecognized peak
+Wavelength, nm: 1520.0
+Energy, eV: 0.8178453947368421
+Halfwidth, nm: 40
+
+D2 peak
+Wavelength, nm: 1428.0
+Energy, eV: 0.8705357142857143
+Halfwidth, nm: 16
+
+Unrecognized peak
+Wavelength, nm: 1404.0
+Energy, eV: 0.8854166666666666
+Halfwidth, nm: 34
+
+D3 peak
+Wavelength, nm: 1332.0
+Energy, eV: 0.933277027027027
+Halfwidth, nm: 32
+
+D4 peak
+Wavelength, nm: 1250.0
+Energy, eV: 0.9945
+Halfwidth, nm: 16
+
+Unrecognized peak
+Wavelength, nm: 1196.0
+Energy, eV: 1.0394021739130435
+Halfwidth, nm: 24
+
+BE peak
+Wavelength, nm: 1130.0
+Energy, eV: 1.1001106194690264
+Halfwidth, nm: 12
+

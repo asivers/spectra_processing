@@ -21,8 +21,8 @@ def normalize(arr):
     return arr_out
 
 
-def approx(_temp, _Ea, _B, _C):
-    return _B / (1. + _C * _temp**1.5 / 2.71828**(-_Ea * 11594. / _temp))
+def approx(_temp, _Ea, _I0, _B):
+    return _I0 / (1. + _B * _temp ** 1.5 * 2.71828 ** (-_Ea * 11594. / _temp))
 
 
 data = dict()
@@ -52,17 +52,19 @@ for pair in sorted(data.items(), key=lambda x: (len(x[0]), x[0])):
 tempGiven = np.array(tempGivenArr)
 maxGiven = np.array(maxGivenArr)
 
-p0 = [0.002, 15, 0.01]
-params = []
-params = curve_fit(approx, tempGiven, maxGiven, p0, bounds=((0, -np.inf, -np.inf), (1, np.inf, np.inf)), maxfev=99999)
+params = curve_fit(approx, tempGiven, maxGiven,
+                   p0=[0, 0, 0],
+                   bounds=((0, 0, 0),
+                           (np.inf, np.inf, np.inf)),
+                   maxfev=99999)
 Ea = params[0][0]
-B = params[0][1]
-C = params[0][2]
-print(Ea, B, C)
-with open('eabc.txt', 'w') as ouf:
+I0 = params[0][1]
+B = params[0][2]
+print(Ea, I0, B)
+with open('result.txt', 'w') as ouf:
     ouf.write('Ea = ' + str(Ea) + '\n')
+    ouf.write('I0 = ' + str(I0) + '\n')
     ouf.write('B = ' + str(B) + '\n')
-    ouf.write('C = ' + str(C) + '\n')
 
 leftT = int(tempGiven[0])
 rightT = int(tempGiven[-1]) + 1200
@@ -72,7 +74,7 @@ maxApproxArr = []
 for iTemp in range(leftT, rightT):
     T = float(iTemp)
     tempApproxArr.append(T)
-    curr = B / (1. + C * T**1.5 / 2.71828**(-Ea * 11594. / T))
+    curr = I0 / (1. + B * T ** 1.5 * 2.71828 ** (-Ea * 11594. / T))
     maxApproxArr.append(curr)
 
 tempGiven = np.array(tempGivenArr)
