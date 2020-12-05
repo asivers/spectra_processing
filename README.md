@@ -1,1 +1,1 @@
-Расчеты спектров люминесценции кремния
+Calculations of silicon luminescence spectra 
